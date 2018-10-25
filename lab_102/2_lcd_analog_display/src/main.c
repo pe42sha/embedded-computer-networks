@@ -21,19 +21,10 @@
 // include the stdio library
 #include "stdio.h"
 
-//map the potentiometer to PA0
-gpio_pin_t pot = {PA_0, GPIOA, GPIO_PIN_0};
+// map pot to PA0
+gpio_pin_t pot = {PA_0, GPIOA, GPIO_PIN_0};
 
 // LCD DEFINES
-
-// define a message boarder (note the lcd is 28 characters wide using Font24)
-#define BOARDER     "****************************"
-
-// specify a welcome message
-const char * welcome_message[2] = 
-{
-  "*      This thing on?      *"
-};
 
 // CODE
 
@@ -44,6 +35,9 @@ int main()
   // properly
   HAL_Init();
   init_sysclk_216MHz();
+	
+	// define adc_val
+
   
   // initialise the lcd
   BSP_LCD_Init();
@@ -59,15 +53,19 @@ int main()
   
   // print the welcome message ...
   BSP_LCD_SetTextColor(LCD_COLOR_RED);
-  BSP_LCD_DisplayStringAtLine(0, (uint8_t *)BOARDER);
-  BSP_LCD_DisplayStringAtLine(1, (uint8_t *)welcome_message[0]);
-  BSP_LCD_DisplayStringAtLine(3, (uint8_t *)BOARDER); 
     
   // delay a little ...
   HAL_Delay(5000);
 	
+	while(1)
+	{
+		
+		
 	// format a string based around the adc value and print to lcd
-	char str[12];
-	sprintf(str, “ADC = %4d”, adc_val);
-	BSP_LCD_DisplayStringAtLine(6, (uint8_t *)str);
+	char str[16];
+	uint16_t adc_val = read_adc(pot); // put adc value into adc_val
+	sprintf(str, "ADC = %4d", adc_val);
+	BSP_LCD_DisplayStringAtLine(1, (uint8_t *)str);
+	HAL_Delay (200);
+	}
 }

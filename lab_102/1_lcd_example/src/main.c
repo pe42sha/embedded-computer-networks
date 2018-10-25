@@ -65,6 +65,7 @@ int main()
   int counter = 0;
   while(1)
   {
+		
     // format a string based around the uptime counter
     char str[20];
     sprintf(str, "%d s", counter++);
