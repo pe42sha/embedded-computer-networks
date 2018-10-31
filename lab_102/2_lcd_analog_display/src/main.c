@@ -21,7 +21,7 @@
 // include the stdio library
 #include "stdio.h"
 
-// map pot to PA0
+// map pot to PA_0
 gpio_pin_t pot = {PA_0, GPIOA, GPIO_PIN_0};
 
 // LCD DEFINES
@@ -36,9 +36,9 @@ int main()
   HAL_Init();
   init_sysclk_216MHz();
 	
-	// define adc_val
-
-  
+	// initialise the adc
+	init_adc(pot);
+	
   // initialise the lcd
   BSP_LCD_Init();
   BSP_LCD_LayerDefaultInit(LTDC_ACTIVE_LAYER, SDRAM_DEVICE_ADDR);
@@ -58,14 +58,12 @@ int main()
   HAL_Delay(5000);
 	
 	while(1)
-	{
-		
-		
-	// format a string based around the adc value and print to lcd
-	char str[16];
-	uint16_t adc_val = read_adc(pot); // put adc value into adc_val
-	sprintf(str, "ADC = %4d", adc_val);
-	BSP_LCD_DisplayStringAtLine(1, (uint8_t *)str);
-	HAL_Delay (200);
+	{		
+		// format a string based around the adc value and print to lcd
+		char str[16]; //define a 16 bit string
+		uint16_t adc_val = read_adc(pot); // put adc value into adc_val
+		sprintf(str, "ADC = %4d", adc_val); //print adc_val and store in str
+		BSP_LCD_DisplayStringAtLine(2, (uint8_t *)str); //display str at line 1
+		HAL_Delay (200);
 	}
 }
