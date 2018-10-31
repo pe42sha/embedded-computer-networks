@@ -55,14 +55,14 @@ int main()
   BSP_LCD_SetTextColor(LCD_COLOR_RED);
     
   // delay a little ...
-  HAL_Delay(5000);
+  HAL_Delay(500);
 	
 	while(1)
 	{		
 		// format a string based around the adc value and print to lcd
 		char str[16]; //define a 16 bit string
 		uint16_t adc_val = read_adc(pot); // put adc value into adc_val
-		sprintf(str, "ADC = %4d", adc_val); //print adc_val and store in str
+		sprintf(str, "ADC=%3d%%", (adc_val*100)/4070); //print adc_val and store in str
 		BSP_LCD_DisplayStringAtLine(2, (uint8_t *)str); //display str at line 1
 		HAL_Delay (200);
 	}
