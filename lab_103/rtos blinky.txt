@@ -1,0 +1,9 @@
+Now change “dumb_delay(xxx)” to “osDelay(xxx)”.
+
+What happens to the os_idle_demon now?
+State changes from ready to running
+Stack usage falls to 0%
+
+What happens to the event viewer?
+Idle thread is active almost all the time apart
+from when the LED threads are actively switching

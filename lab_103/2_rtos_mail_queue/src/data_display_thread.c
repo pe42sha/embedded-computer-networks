@@ -30,7 +30,7 @@ osThreadId tid_display_thread;
 osThreadDef(display_thread, osPriorityNormal, 1, 0);
 
 // the mailbox we are pulling data from is declared elsewhere ...
-extern osMailQId mail_box;
+extern   osMailQId mail_box;
 
 // THREAD INITIALISATION
 
