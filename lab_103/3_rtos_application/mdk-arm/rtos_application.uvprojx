@@ -10,7 +10,7 @@
       <TargetName>rtos_application</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
+      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F746NGHx</Device>
@@ -867,6 +867,21 @@
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\libraries\bsp\stm32f7_discovery_shu_kit\src\gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32746g_discovery.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\libraries\bsp\stm32f7_discovery\bsp\src\stm32746g_discovery.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32746g_discovery_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\libraries\bsp\stm32f7_discovery\bsp\src\stm32746g_discovery_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32746g_discovery_sdram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\libraries\bsp\stm32f7_discovery\bsp\src\stm32746g_discovery_sdram.c</FilePath>
             </File>
           </Files>
         </Group>

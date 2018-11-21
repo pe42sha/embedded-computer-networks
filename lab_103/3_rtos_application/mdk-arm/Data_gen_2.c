@@ -67,7 +67,6 @@ int init_data_thread(void)
 void data_thread(void const *argument)
 {
   // set up our counters
-  uint32_t i = 0;
 	uint32_t j = 0;
   
   // infinite loop generating our fake data (one set of samples per second)
@@ -82,24 +81,13 @@ void data_thread(void const *argument)
     // get a random number 
     float random = get_random_float();
     
-    // toggle led
-    toggle_gpio(led1);
-    
-    // generate our fake data
-    i++;
-    mail->counter = i;
-    mail->current = (1.0f / (random * i)); 
-    mail->voltage = (5.0f / (random * i));
 		// generate new fake data
 		j++;
 		mailnew->counter = j;
 		mailnew->voltage = (18.0f / (random * j));
-    
-    // put the data in the mail box and wait for 1 second
-    osMailPut(mail_box, mail);
-    osDelay(1000);
+
 		// put new data into new mail box and wait for 5 seconds
 		osMailPut(mail_box, mailnew);
-		osDelay(500);
+		osDelay(5000);
   }
 } 
