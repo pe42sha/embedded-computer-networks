@@ -16,8 +16,16 @@
 #include "clock.h"
 
 // declare the extern methods that set the threads up for us 
-extern int init_data_thread(void);
-extern int init_display_thread(void);
+//extern int init_data_thread(void);
+//extern int init_display_thread(void);
+extern int init_output_thread(void);
+
+// Override HAL Delay
+// Point HAL delay to osDelay
+void HAL_Delay(__IO uint32_t Delay)
+{
+	osDelay(Delay);
+}
 
 // this is the main method
 int main()
@@ -40,9 +48,9 @@ int main()
   // file (OS_CLOCK) which we can do using the configuration wizard
     
   // initialise our threads
-  init_data_thread();
-  init_display_thread();
-	init_blinky_thread();
+  //init_data_thread();
+  //init_display_thread();
+	init_output_thread();
   
   // start everything running
   osKernelStart();
